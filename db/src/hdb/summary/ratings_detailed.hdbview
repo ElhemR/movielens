@@ -1,0 +1,14 @@
+view "aa.movielens.db.hdb.summary::ratings_detailed" as
+select
+    t1.movieid
+  , t1.userid
+  , 'user id: ' || t1.userid || ' - user rating: ' || t1.rating || ' - movie id: ' || t1.movieid || ' - title: ' || t2.title as description
+  , t2.title
+  , t2.genres
+  , t3.imdbid
+  , t3.tmdbid
+  , t1.rating
+  , t1.timestamp
+from "aa.movielens.db.hdb::data.ratings" t1
+left outer join "aa.movielens.db.hdb::data.movies" t2 on (t1.movieid = t2.movieid)
+left outer join "aa.movielens.db.hdb::data.links"  t3 on (t1.movieid = t3.movieid);

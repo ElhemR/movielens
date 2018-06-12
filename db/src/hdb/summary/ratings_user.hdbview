@@ -1,0 +1,10 @@
+view "aa.movielens.db.hdb.summary::ratings_user" as
+select distinct
+    userid
+  , 'user id: ' || userid || ' - rating count: ' ||   count(1) over( partition by userid )  as description
+  , count(1)               over( partition by userid ) as rating_count
+  , avg(rating)            over( partition by userid ) as rating_avg
+  , nth_value(timestamp,1) over( partition by userid  order by timestamp desc, movieid) as last_rating_date
+  , nth_value(rating   ,1) over( partition by userid  order by timestamp desc, movieid) as last_rating
+  , nth_value(movieid  ,1) over( partition by userid  order by timestamp desc, movieid) as last_movieid
+from "aa.movielens.db.hdb::data.ratings";

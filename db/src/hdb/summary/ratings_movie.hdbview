@@ -1,0 +1,16 @@
+view "aa.movielens.db.hdb.summary::ratings_movie" as
+select distinct
+    t1.movieid
+  , 'movie id: ' || t1.movieid || ' - rating count: ' ||  count(1) over( partition by t1.movieid ) as description
+  , t2. title
+  , t2. genres
+  , t3. imdbid
+  , t3. tmdbid
+  , count(1)               over( partition by t1.movieid ) as rating_count
+  , avg(rating)            over( partition by t1.movieid ) as rating_avg
+  , nth_value(timestamp,1) over( partition by t1.movieid  order by t1.timestamp desc, t1.movieid) as last_rating_date
+  , nth_value(rating   ,1) over( partition by t1.movieid  order by t1.timestamp desc, t1.movieid) as last_rating
+  , nth_value(userid   ,1) over( partition by t1.movieid  order by t1.timestamp desc, t1.movieid) as last_userid
+from "aa.movielens.db.hdb::data.ratings" t1
+left outer join "aa.movielens.db.hdb::data.movies" t2 on (t1.movieid = t2.movieid)
+left outer join "aa.movielens.db.hdb::data.links"  t3 on (t1.movieid = t3.movieid);
