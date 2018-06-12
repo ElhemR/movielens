@@ -16,9 +16,15 @@ modules:
           url: '${default-url}'
     requires:
       - name: hdi_db
-
-  
-
+  - name: html
+    type: html5
+    path: html
+    requires:
+      - name: js_api
+        properties:
+          name: movielens_api
+          url: '~{url}'
+        group: destinations
 resources:
   - name: hdi_db
     parameters:
