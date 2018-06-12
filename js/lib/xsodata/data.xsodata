@@ -2,8 +2,8 @@ service {
   // expose the model result views
   "aa.movielens.db.hdb.apl::recommendation_collaborative_filtering"  as "apl_recommendation_collaborative_filtering" key ("USERID" , "RANK");
   "aa.movielens.db.hdb.apl::recommendation_contentbased_filtering"   as "apl_recommendation_contentbased_filtering"  key ("MOVIEID", "RANK");
-  "aa.movielens.db.hdb.pal::apriori_collaborative_filtering"         as "pal_apriori_collaborative_filtering"        key ("MOVIEID", "RANK");
-  "aa.movielens.db.hdb.pal::apriori_contentbased_filtering"          as "pal_apriori_contentbased_filtering"         key ("USERID" , "RANK");
+  "aa.movielens.db.hdb.pal::apriori_collaborative_filtering"         as "pal_apriori_collaborative_filtering"        key ("USERID" , "RANK");
+  "aa.movielens.db.hdb.pal::apriori_contentbased_filtering"          as "pal_apriori_contentbased_filtering"         key ("MOVIEID", "RANK");
 
   // expose the summary user and movie views
   "aa.movielens.db.hdb.summary::ratings_user"       as "ratings_user"     key ("USERID");
