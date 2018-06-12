@@ -1,0 +1,155 @@
+namespace aa.movielens.db.hdb.apl;
+
+context recommendation {
+    entity function_header {
+        KEY   : String(50);
+        VALUE : String(255);
+    };
+
+    entity operation_config {
+        KEY   : String(1000);
+        VALUE : String(5000);
+    };
+
+    entity variable_descs {
+        RANK          : Integer;
+        NAME          : String(255);
+        STORAGE       : String(10);
+        VALUETYPE     : String(10);
+        KEYLEVEL      : Integer;
+        ORDERLEVEL    : Integer;
+        MISSINGSTRING : String(255);
+        GROUPNAME     : String(255);
+        DESCRIPTION   : String(255);
+    };
+
+    entity result_model {
+        NAME       : String(255);
+        VERSION    : Integer;
+        ID         : Integer;
+        PARENTID   : Integer;
+        ENUMFLAG   : Integer;
+        PARAMNAME  : String(255);
+        PARAMTYPE  : String(255);
+        PARAMVALUE : String(255);
+    };
+
+    entity result_model_node_user {
+        NODE : Integer; // must be of the same SQL type as the User column (userId from rating here)
+    };
+
+    entity result_model_node_movie {
+        NODE : Integer; // must be of the same SQL type as the Item column (movieId from rating  here)
+    };
+
+    entity result_model_links {
+        GRAPH_NAME     : String(255);
+        WEIGHT         : Double;
+        KXNODEFIRST    : Integer; // must be of the same SQL type as the User column (userId from rating  here)
+        KXNODESECOND   : Integer; // must be of the same SQL type as the Item column (movieId from rating  here)
+        KXNODESECOND_2 : Integer; // must be of the same SQL type as the Item column (movieId from rating  here)
+    };
+
+    entity result_operation_log {
+        OID       : String(50);
+        TIMESTAMP : UTCTimestamp;
+        LEVEL     : Integer;
+        ORIGIN    : String(50);
+        MESSAGE   : LargeString;
+    };
+
+    entity result_summary {
+        OID   : String(50);
+        KEY   : String(100);
+        VALUE : String(200);
+    };
+
+    entity result_indicators {
+        OID      : String(50);
+        VARIABLE : String(255);
+        TARGET   : String(255);
+        KEY      : String(100);
+        VALUE    : LargeString;
+        DETAIL   : LargeString;
+    };
+
+    entity result_reco_sql_code {
+        OID   : String(50);
+        KEY   : String(100);
+        VALUE : LargeString;
+    };
+
+    table type tt_function_header {
+        KEY   : String(50);
+        VALUE : String(255);
+    };
+    table type tt_operation_config {
+        KEY   : String(1000);
+        VALUE : String(5000);
+    };
+    table type tt_variable_descs {
+        RANK          : Integer;
+        NAME          : String(255);
+        STORAGE       : String(10);
+        VALUETYPE     : String(10);
+        KEYLEVEL      : Integer;
+        ORDERLEVEL    : Integer;
+        MISSINGSTRING : String(255);
+        GROUPNAME     : String(255);
+        DESCRIPTION   : String(255);
+    };
+    table type tt_model_native {
+        NAME       : String(255);
+        VERSION    : Integer;
+        ID         : Integer;
+        PARENTID   : Integer;
+        ENUMFLAG   : Integer;
+        PARAMNAME  : String(255);
+        PARAMTYPE  : String(255);
+        PARAMVALUE : String(255);
+    };
+    table type tt_operation_log {
+        OID       : String(50);
+        TIMESTAMP : UTCTimestamp;
+        LEVEL     : Integer;
+        ORIGIN    : String(50);
+        MESSAGE   : LargeString;
+    };
+    table type tt_summary {
+        OID   : String(50);
+        KEY   : String(100);
+        VALUE : String(200);
+    };
+    table type tt_indicators {
+        OID      : String(50);
+        VARIABLE : String(255);
+        TARGET   : String(255);
+        KEY      : String(100);
+        VALUE    : LargeString;
+        DETAIL   : LargeString;
+    };
+    table type tt_movielens_dataset {
+        USERID    : Integer;
+        MOVIEID   : Integer;
+        RATING    : Double;
+        TIMESTAMP : Integer;
+    };
+    table type tt_movielens_node_user {
+        NODE : Integer; // must be of the same SQL type as the User column (USERID here)
+    };
+    table type tt_movielens_node_movie {
+        NODE : Integer; // must be of the same SQL type as the Item column (MOVIEID here)
+    };
+    table type tt_movielens_links {
+        GRAPH_NAME     : String(255);
+        WEIGHT         : Double;
+        KXNODEFIRST    : Integer;     // must be of the same SQL type as the User column (USERID here)
+        KXNODESECOND   : Integer;     // must be of the same SQL type as the Item column (MOVIEID here)
+        KXNODESECOND_2 : Integer;     // must be of the same SQL type as the Item column (MOVIEID here)
+    };
+    table type tt_reco_sql_code {
+        OID   : String(50);
+        KEY   : String(100);
+        VALUE : LargeString;
+    };
+};

@@ -1,0 +1,54 @@
+{
+    "area" : "APL_AREA",
+    "function" : "CREATE_RECO_MODEL_AND_TRAIN",
+    "parameters" : [
+        {
+            "type" : "aa.movielens.db.hdb.apl::recommendation.tt_function_header",
+            "direction" : "IN"
+        },
+        {
+            "type" : "aa.movielens.db.hdb.apl::recommendation.tt_operation_config",
+            "direction" : "IN"
+        },
+        {
+            "type" : "aa.movielens.db.hdb.apl::recommendation.tt_variable_descs",
+            "direction" : "IN"
+        },
+        {
+            "type" : "aa.movielens.db.hdb.apl::recommendation.tt_movielens_dataset",
+            "direction" : "IN"
+        },
+        {
+           "type" : "aa.movielens.db.hdb.apl::recommendation.tt_model_native",
+           "direction" : "OUT"
+        },
+        {
+           "type" : "aa.movielens.db.hdb.apl::recommendation.tt_movielens_node_user",
+           "direction" : "OUT"
+        },
+        {
+           "type" : "aa.movielens.db.hdb.apl::recommendation.tt_movielens_node_movie",
+           "direction" : "OUT"
+        },
+        {
+           "type" : "aa.movielens.db.hdb.apl::recommendation.tt_movielens_links",
+           "direction" : "OUT"
+        },
+        {
+           "type" : "aa.movielens.db.hdb.apl::recommendation.tt_operation_log",
+           "direction" : "OUT"
+        },
+        {
+           "type" : "aa.movielens.db.hdb.apl::recommendation.tt_summary",
+           "direction" : "OUT"
+        },
+        {
+           "type" : "aa.movielens.db.hdb.apl::recommendation.tt_indicators",
+           "direction" : "OUT"
+        },
+        {
+           "type" : "aa.movielens.db.hdb.apl::recommendation.tt_reco_sql_code",
+           "direction" : "OUT"
+        }
+    ]
+}
