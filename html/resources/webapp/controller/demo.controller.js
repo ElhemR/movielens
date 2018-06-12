@@ -19,6 +19,13 @@ sap.ui.define([
 			}
 			return result;
 		},
+		onMasterListItemPress: function(oEvent) {
+			var sToPageId = oEvent.getParameter("listItem").getCustomData()[0].getValue();
+			this.getSplitAppObj().toMaster(this.createId(sToPageId));
+		},
+		onPressMasterBack: function() {
+			this.getSplitAppObj().backMaster();
+		},
 		onDetailListItemPress: function(oEvent) {
 			var sToPageId = oEvent.getParameter("listItem").getCustomData()[0].getValue();
 			this.getSplitAppObj().toDetail(this.createId(sToPageId));

@@ -4,10 +4,30 @@
 		<masterPages>
 			<Page id="master" title="Scenario">
 				<content>
+					<List itemPress="onMasterListItemPress">
+						<items>
+							<StandardListItem title="Execute Algorithms" type="Navigation" custom:to="sub_master_execute"/>
+							<StandardListItem title="Compare Results" type="Navigation" custom:to="sub_master_compare"/>
+						</items>
+					</List>
+				</content>
+			</Page>
+			<Page id="sub_master_execute" title="Execute Algorithms" showNavButton="true" navButtonPress="onPressMasterBack">
+				<content>
 					<List itemPress="onDetailListItemPress">
 						<items>
-							<StandardListItem title="Collaborative Filtering" type="Navigation" custom:to="detail_collaborative"/>
-							<StandardListItem title="Content-based Filtering" type="Navigation" custom:to="detail_contentbased"/>
+							<StandardListItem title="APL Recommendation" type="Active" custom:to="detail_execute_apl_recommendation"/>
+							<StandardListItem title="PAL APRIORI" type="Active" custom:to="detail_execute_pal_apriori"/>
+						</items>
+					</List>
+				</content>
+			</Page>
+			<Page id="sub_master_compare" title="Compare Results" showNavButton="true" navButtonPress="onPressMasterBack">
+				<content>
+					<List itemPress="onDetailListItemPress">
+						<items>
+							<StandardListItem title="Collaborative Filtering" type="Active" custom:to="detail_compare_collaborative"/>
+							<StandardListItem title="Content-based Filtering" type="Active" custom:to="detail_compare_contentbased"/>
 						</items>
 					</List>
 				</content>
@@ -17,14 +37,24 @@
 			<Page id="detail" title="Moveilens Recommendation">
 				<content></content>
 			</Page>
-			<Page id="detail_collaborative" title="Collaborative Filtering">
+			<Page id="detail_execute_apl_recommendation" title="Execute APL Recommendation Algorithm">
 				<content>
-					<!--<mvc:XMLView viewName="movielens.html.view.results.collaborative"/>-->
+					<!--<mvc:XMLView viewName="movielens.html.view.execute.collaborative"/>-->
 				</content>
 			</Page>
-			<Page id="detail_contentbased" title="Content-based Filtering">
+			<Page id="detail_execute_pal_apriori" title="Execute PAL APRIORI Algorithm">
 				<content>
-					<!--<mvc:XMLView viewName="movielens.html.view.results.contentbased"/>-->
+					<!--<mvc:XMLView viewName="movielens.html.view.execute.contentbased"/>-->
+				</content>
+			</Page>
+			<Page id="detail_compare_collaborative" title="Collaborative Filtering Results">
+				<content>
+					<!--<mvc:XMLView viewName="movielens.html.view.compare.collaborative"/>-->
+				</content>
+			</Page>
+			<Page id="detail_compare_contentbased" title="Content-based Filtering Results">
+				<content>
+					<!--<mvc:XMLView viewName="movielens.html.view.compare.contentbased"/>-->
 				</content>
 			</Page>
 		</detailPages>
