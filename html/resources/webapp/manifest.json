@@ -74,13 +74,14 @@
 			},
 			"": {
 				"type": "sap.ui.model.odata.v2.ODataModel",
+				"preload": true,
 				"settings": {
 					"defaultOperationMode": "Server",
-					"defaultBindingMode": "TwoWay",
-					"defaultCountMode": "Both"
+					"defaultBindingMode": "Default",
+					"defaultCountMode": "Inline",
+					"useBatch": false
 				},
-				"dataSource": "data.xsodata",
-				"preload": false
+				"dataSource": "data.xsodata"
 			}
 		},
 		"resources": {
