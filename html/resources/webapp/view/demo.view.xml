@@ -6,8 +6,8 @@
 				<content>
 					<List itemPress="onMasterListItemPress">
 						<items>
-							<StandardListItem title="Execute Algorithms" type="Navigation" custom:to="sub_master_execute"/>
 							<StandardListItem title="Compare Results" type="Navigation" custom:to="sub_master_compare"/>
+							<StandardListItem title="Execute Algorithms" type="Navigation" custom:to="sub_master_execute"/>
 						</items>
 					</List>
 				</content>
@@ -49,12 +49,12 @@
 			</Page>
 			<Page id="detail_compare_collaborative" title="Collaborative Filtering Results">
 				<content>
-					<!--<mvc:XMLView viewName="movielens.html.view.compare.collaborative"/>-->
+					<mvc:XMLView viewName="movielens.html.view.compare.collaborative"/>
 				</content>
 			</Page>
 			<Page id="detail_compare_contentbased" title="Content-based Filtering Results">
 				<content>
-					<!--<mvc:XMLView viewName="movielens.html.view.compare.contentbased"/>-->
+					<mvc:XMLView viewName="movielens.html.view.compare.contentbased"/>
 				</content>
 			</Page>
 		</detailPages>
