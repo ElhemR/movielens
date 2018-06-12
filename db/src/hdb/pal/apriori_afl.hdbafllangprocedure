@@ -1,0 +1,22 @@
+{
+    "area" : "AFLPAL",
+    "function" : "APRIORIRULE",
+    "parameters" : [
+        {
+            "type" : "aa.movielens.db.hdb.pal::apriori.tt_movielens_dataset",
+            "direction" : "IN"
+        },
+        {
+            "type" : "aa.movielens.db.hdb.pal::apriori.tt_parameter",
+            "direction" : "IN"
+        },
+        {
+            "type" : "aa.movielens.db.hdb.pal::apriori.tt_result_rules",
+            "direction" : "OUT"
+        },
+        {
+            "type" : "aa.movielens.db.hdb.pal::apriori.tt_model_pmml",
+            "direction" : "OUT"
+        }
+    ]
+}

@@ -1,0 +1,30 @@
+view "aa.movielens.db.hdb.pal::apriori_collaborative_filtering" as
+select 
+      t1.userid
+    , t1.rank
+    , t1.movieid
+    , t1.score
+    , movies.title
+    , movies.genres
+    , links.imdbid
+    , links.tmdbid
+from (
+  select
+      t1.userid
+    , row_number() over(partition by t1.userid order by t1.score desc, t1.consequent desc ) as rank
+    , t1.consequent as movieid
+    , t1.score
+  from (
+    select 
+    	input_data.userid, 
+    	rules.postrule as consequent, 
+    	max(rules.confidence) as score
+    from "aa.movielens.db.hdb::data.ratings" as input_data
+    left outer join "aa.movielens.db.hdb.pal::apriori.result_rules" rules on (cast (input_data.movieid as varchar(500)) = rules.prerule)
+    where rules.postrule is not null
+    group by input_data.userid, rules.postrule
+  ) t1
+) t1
+left outer join "aa.movielens.db.hdb::data.movies" movies on movies.movieid = t1.movieid
+left outer join "aa.movielens.db.hdb::data.links"  links  on links.movieid  = t1.movieid
+where t1.rank <= 5;

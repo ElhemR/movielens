@@ -1,0 +1,54 @@
+namespace aa.movielens.db.hdb.pal;
+
+using aa.movielens.db.hdb :: data.ratings;
+
+context apriori {
+    entity parameter {
+        PARAM_NAME   : String(100);
+        INT_VALUE    : Integer;
+        DOUBLE_VALUE : Double;
+        STRING_VALUE : String(100);
+    };
+
+    entity result_rules {
+        PRERULE    : String(500);
+        POSTRULE   : String(500);
+        SUPPORT    : Double;
+        CONFIDENCE : Double;
+        LIFT       : Double;
+    };
+
+    entity model_pmml {
+        ID        : Integer;
+        PMMLMODEL : String(5000);
+    };
+
+    view movielens_dataset as
+        select from ratings
+        {
+            USERID,
+            MOVIEID
+        };
+
+    table type tt_parameter {
+        PARAM_NAME   : String(100);
+        INT_VALUE    : Integer;
+        DOUBLE_VALUE : Double;
+        STRING_VALUE : String(100);
+    };
+    table type tt_movielens_dataset {
+        USERID  : Integer;
+        MOVIEID : Integer;
+    };
+    table type tt_result_rules {
+        PRERULE    : String(500);
+        POSTRULE   : String(500);
+        SUPPORT    : Double;
+        CONFIDENCE : Double;
+        LIFT       : Double;
+    };
+    table type tt_model_pmml {
+        ID        : Integer;
+        PMMLMODEL : String(5000);
+    };
+};
