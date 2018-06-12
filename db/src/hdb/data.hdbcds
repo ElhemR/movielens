@@ -1,0 +1,30 @@
+namespace aa.movielens.db.hdb;
+
+context data {
+
+    entity links {
+        key MOVIEID : Integer;
+            IMDBID  : Integer;
+            TMDBID  : Integer;
+    };
+
+    entity movies {
+        key MOVIEID : Integer;
+            TITLE   : String(255);
+            GENRES  : String(255);
+    };
+
+    entity ratings {
+        key USERID    : Integer;
+        key MOVIEID   : Integer;
+            RATING    : DecimalFloat;
+            TIMESTAMP : Integer;
+    };
+
+    entity tags {
+        key USERID    : Integer;
+        key MOVIEID   : Integer;
+        key TAG       : String(255);
+            TIMESTAMP : Integer;
+    };
+};
