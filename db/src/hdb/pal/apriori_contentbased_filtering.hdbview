@@ -12,7 +12,7 @@ from (
   select
       t1.movieid
     , row_number() over(partition by t1.movieid order by t1.score desc, t1.consequent desc ) as rank
-    , t1.consequent as similar_movieid
+    , cast(t1.consequent as integer) as similar_movieid
     , t1.score
   from (
     select movieid, rules.postrule as consequent, rules.confidence as score

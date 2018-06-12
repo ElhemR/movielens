@@ -12,7 +12,7 @@ from (
   select
       t1.userid
     , row_number() over(partition by t1.userid order by t1.score desc, t1.consequent desc ) as rank
-    , t1.consequent as movieid
+    , cast(t1.consequent as integer) as movieid
     , t1.score
   from (
     select 
